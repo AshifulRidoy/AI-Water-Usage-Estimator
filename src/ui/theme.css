@@ -1,0 +1,56 @@
+/* Injected on every supported AI site alongside the content script.
+   CSS variables only, per architecture.md "Styling": "Avoid global CSS.
+   Every component owns its styles." — this file scopes everything under
+   .aiwe-* class names so it never leaks into host page styles. */
+
+:root {
+  --aiwe-bg: #ffffff;
+  --aiwe-fg: #1e293b;
+  --aiwe-muted: #64748b;
+  --aiwe-accent: #0ea5e9;
+  --aiwe-accent-green: #10b981;
+  --aiwe-border: #e0f2fe;
+  --aiwe-card-bg: #f8fafc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --aiwe-bg: #111827;
+    --aiwe-fg: #f3f4f6;
+    --aiwe-muted: #9ca3af;
+    --aiwe-accent: #38bdf8;
+    --aiwe-accent-green: #34d399;
+    --aiwe-border: #374151;
+    --aiwe-card-bg: #1f2937;
+  }
+}
+
+.aiwe-badge-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 2px 9px;
+  font-size: 12px;
+  font-family:
+    "Inter",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: var(--aiwe-muted);
+  background: var(--aiwe-card-bg);
+  border: 1px solid var(--aiwe-border);
+  border-radius: 999px;
+  cursor: default;
+  user-select: none;
+  width: fit-content;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.aiwe-badge-container:hover {
+  color: var(--aiwe-fg);
+  border-color: var(--aiwe-accent);
+}

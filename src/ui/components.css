@@ -1,0 +1,365 @@
+/* "Eco-Modern Clarity" theme for popup/options/methodology surfaces.
+   Bright, airy palette with soft gradients and diffused shadows — see
+   docs/ for the full design spec this implements. */
+
+:root {
+  /* Backgrounds */
+  --aiwe-bg-start: #f8fafc;
+  --aiwe-bg-end: #e0f2fe;
+  --aiwe-card-bg: #ffffff;
+  --aiwe-border: #eef2f6;
+
+  /* Text */
+  --aiwe-title: #1e293b; /* Deep charcoal */
+  --aiwe-label: #64748b; /* Slate grey */
+  --aiwe-fg: #1e293b;
+  --aiwe-muted: #64748b;
+
+  /* Brand palette */
+  --aiwe-water-blue: #38bdf8;
+  --aiwe-water-green: #10b981;
+  --aiwe-energy-azure: #0ea5e9;
+  --aiwe-co2-mint: #34d399;
+
+  /* Shadows / radii */
+  --aiwe-shadow: 0 20px 45px rgba(30, 41, 59, 0.08);
+  --aiwe-radius-lg: 24px;
+  --aiwe-radius-md: 16px;
+}
+
+[data-theme="dark"] {
+  --aiwe-bg-start: #0f172a;
+  --aiwe-bg-end: #111827;
+  --aiwe-card-bg: #1e293b;
+  --aiwe-border: #334155;
+  --aiwe-title: #f1f5f9;
+  --aiwe-label: #94a3b8;
+  --aiwe-fg: #f1f5f9;
+  --aiwe-muted: #94a3b8;
+  --aiwe-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(160deg, var(--aiwe-bg-start), var(--aiwe-bg-end));
+  color: var(--aiwe-fg);
+  font-family:
+    "Inter",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* ---------- Dashboard shell ---------- */
+
+.aiwe-dashboard {
+  width: 360px;
+  padding: 24px 20px 20px;
+}
+
+.aiwe-dashboard-loading {
+  width: 360px;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.aiwe-dashboard-header h1 {
+  margin: 0 0 18px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--aiwe-title);
+}
+
+/* ---------- Hero water footprint card ---------- */
+
+.aiwe-hero-card {
+  background: var(--aiwe-card-bg);
+  border-radius: var(--aiwe-radius-lg);
+  box-shadow: var(--aiwe-shadow);
+  padding: 24px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.aiwe-hero-title {
+  margin: 0 0 12px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--aiwe-title);
+}
+
+.aiwe-hero-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--aiwe-border);
+  font-size: 13px;
+  color: var(--aiwe-label);
+}
+
+.aiwe-hero-footer strong {
+  color: var(--aiwe-title);
+}
+
+/* ---------- Circular water gauge ---------- */
+
+.aiwe-gauge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aiwe-gauge svg {
+  display: block;
+}
+
+.aiwe-gauge-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.aiwe-gauge-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--aiwe-title);
+  line-height: 1.1;
+}
+
+.aiwe-gauge-value-secondary {
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.aiwe-gauge-unit {
+  font-size: 0.55em;
+  font-weight: 600;
+  color: var(--aiwe-label);
+  margin-left: 2px;
+}
+
+.aiwe-gauge-label {
+  font-size: 10.5px;
+  color: var(--aiwe-label);
+  margin-top: 2px;
+}
+
+/* ---------- Secondary metrics grid ---------- */
+
+.aiwe-metric-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.aiwe-metric-card {
+  background: var(--aiwe-card-bg);
+  border-radius: var(--aiwe-radius-md);
+  box-shadow: var(--aiwe-shadow);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aiwe-metric-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aiwe-metric-icon-blue {
+  background: rgba(56, 189, 248, 0.15);
+  color: #0ea5e9;
+}
+
+.aiwe-metric-icon-azure {
+  background: rgba(14, 165, 233, 0.15);
+  color: #0ea5e9;
+}
+
+.aiwe-metric-icon-mint {
+  background: rgba(52, 211, 153, 0.15);
+  color: #10b981;
+}
+
+.aiwe-metric-icon-slate {
+  background: rgba(100, 116, 139, 0.15);
+  color: #475569;
+}
+
+.aiwe-metric-label {
+  font-size: 12px;
+  color: var(--aiwe-label);
+}
+
+.aiwe-metric-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--aiwe-title);
+  margin-top: 2px;
+}
+
+/* ---------- Trend + history cards ---------- */
+
+.aiwe-trend-card,
+.aiwe-history-card {
+  background: var(--aiwe-card-bg);
+  border-radius: var(--aiwe-radius-lg);
+  box-shadow: var(--aiwe-shadow);
+  padding: 18px 16px;
+  margin-bottom: 16px;
+}
+
+.aiwe-trend-title {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--aiwe-title);
+}
+
+.aiwe-history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  color: var(--aiwe-fg);
+}
+
+.aiwe-history-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--aiwe-border);
+}
+
+.aiwe-history-list li:last-child {
+  border-bottom: none;
+}
+
+/* ---------- Actions / footer ---------- */
+
+.aiwe-dashboard-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 4px 8px;
+}
+
+.aiwe-text-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--aiwe-energy-azure);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.aiwe-text-button:hover {
+  text-decoration: underline;
+}
+
+.aiwe-dashboard-disclaimer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--aiwe-label);
+  margin: 4px 0 0;
+}
+
+/* ---------- Spinner ---------- */
+
+.aiwe-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--aiwe-border);
+  border-top-color: var(--aiwe-energy-azure);
+  border-radius: 50%;
+  animation: aiwe-spin 0.8s linear infinite;
+}
+
+@keyframes aiwe-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Options page ---------- */
+
+.aiwe-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--aiwe-border);
+  font-size: 14px;
+}
+
+.aiwe-toggle {
+  cursor: pointer;
+}
+
+/* ---------- Methodology page ---------- */
+
+.aiwe-methodology {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px;
+  line-height: 1.6;
+  color: var(--aiwe-fg);
+}
+
+.aiwe-methodology h1 {
+  color: var(--aiwe-title);
+}
+
+.aiwe-methodology h2 {
+  margin-top: 28px;
+  color: var(--aiwe-title);
+}
+
+/* ---------- Generic reusable card (kept for future use) ---------- */
+
+.aiwe-card {
+  background: var(--aiwe-card-bg);
+  border: 1px solid var(--aiwe-border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+}
+
+.aiwe-card-title {
+  font-size: 12px;
+  color: var(--aiwe-label);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.aiwe-card-body {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--aiwe-title);
+}
